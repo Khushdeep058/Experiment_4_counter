@@ -1,0 +1,269 @@
+/* Import Digital Font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.app-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e8f4f8 0%, #d4e7ed 50%, #c5dbe3 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.app-container::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(168, 216, 234, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(168, 216, 234, 0.2) 0%, transparent 50%);
+    animation: glow 8s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+.content-wrapper {
+    text-align: center;
+    max-width: 800px;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #2a5a6f;
+    margin-bottom: 3rem;
+    letter-spacing: 0.1em;
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 
+        2px 2px 4px rgba(255, 255, 255, 0.5),
+        -1px -1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.stopwatch-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 3rem;
+}
+
+.stopwatch-image {
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 
+        0 8px 16px rgba(0, 0, 0, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2);
+    border: 8px solid #a8d8ea;
+    filter: brightness(1) contrast(1.05);
+}
+
+.counter-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.counter-display {
+    background: linear-gradient(180deg, #b8c5d0 0%, #9eaab5 50%, #8a96a1 100%);
+    border-radius: 0.75rem;
+    padding: 1.5rem 3rem;
+    border: 3px solid #2a3540;
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.3),
+        inset 0 -2px 4px rgba(255, 255, 255, 0.2),
+        0 4px 8px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+.counter-display::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.03) 0px,
+        transparent 1px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 3px
+    );
+    border-radius: 0.75rem;
+    pointer-events: none;
+}
+
+.counter-number {
+    font-size: 5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    font-family: 'Orbitron', 'DS-Digital', 'Courier New', monospace;
+    letter-spacing: 0.2em;
+    text-shadow: 
+        1px 1px 0px rgba(255, 255, 255, 0.3),
+        -1px -1px 0px rgba(0, 0, 0, 0.2);
+    filter: contrast(1.1);
+    position: relative;
+    z-index: 1;
+}
+
+.running-indicator {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.pulse-dot {
+    width: 24px;
+    height: 24px;
+    background: #ff4757;
+    border-radius: 50%;
+    box-shadow: 
+        0 0 10px rgba(255, 71, 87, 0.6),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3);
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.button-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+button {
+    font-weight: bold;
+    padding: 1rem 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 
+        0 4px 6px rgba(0, 0, 0, 0.1),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3);
+    font-size: 1.25rem;
+    min-width: 140px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 6px 12px rgba(0, 0, 0, 0.15),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.btn-start {
+    background: linear-gradient(135deg, #74b9ff, #a29bfe);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.btn-start:hover {
+    background: linear-gradient(135deg, #5da5f5, #8b84eb);
+}
+
+.btn-pause {
+    background: linear-gradient(135deg, #fdcb6e, #ffeaa7);
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #2d3436;
+}
+
+.btn-pause:hover {
+    background: linear-gradient(135deg, #f5b759, #f7dc94);
+}
+
+.btn-increment {
+    background: linear-gradient(135deg, #55efc4, #81ecec);
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #2d3436;
+}
+
+.btn-increment:hover {
+    background: linear-gradient(135deg, #3dd6b0, #68dcd6);
+}
+
+.btn-decrement {
+    background: linear-gradient(135deg, #ff7675, #fab1a0);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.btn-decrement:hover {
+    background: linear-gradient(135deg, #e55c5c, #f09d8b);
+}
+
+.btn-reset {
+    background: linear-gradient(135deg, #b2bec3, #dfe6e9);
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #2d3436;
+}
+
+.btn-reset:hover {
+    background: linear-gradient(135deg, #9ca8ae, #c9ced3);
+}
+
+.info-text {
+    color: #2a5a6f;
+    margin-top: 1rem;
+    font-size: 1.125rem;
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .stopwatch-image {
+        width: 240px;
+        height: 240px;
+    }
+
+    .counter-number {
+        font-size: 3rem;
+    }
+
+    .counter-display {
+        padding: 1.5rem 2rem;
+    }
+
+    button {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        min-width: 120px;
+    }
+}
